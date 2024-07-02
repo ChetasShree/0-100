@@ -1,0 +1,45 @@
+<html>
+    <script>        
+        // function populatesum(){
+        //     let a = document.getElementById("firstValue").value;
+        //     let b = document.getElementById("secondValue").value;
+        //     // const element = document.getElementById("finalSum")
+        //     // element.innerHTML = parseInt(a)+parseInt(b);
+        //     fetch("https://sum-server.100xdevs.com/sum?a="+a+"&b="+b).then(function(response){               
+        //         response.text().then(function(ans){
+        //             console.log(ans);
+        //             document.getElementById("finalSum").innerHTML = ans;
+        //         })
+        //     });            
+        // }
+
+        let timeout;
+        function debouncePopulateDiv(){
+            // delay the call to populateSum until i have not been called for 1000ms and I have been called atleast once
+            clearTimeout(timeout);
+            timeout = setTimeout(function(){
+                populatesum()
+            },1000);
+            
+        }
+
+        async function populatesum(){
+        let a = document.getElementById("firstValue").value;
+        let b = document.getElementById("secondValue").value;
+        const response = await fetch("https://sum-server.100xdevs.com/sum?a="+a+"&b="+b)
+        const ans = await response.text();
+        document.getElementById("finalSum").innerHTML = ans;
+        }
+    </script>   
+    <body>
+        <input id="firstValue" type="text" placeholder="first number"></input> <br></br>
+        <input id="secondValue" type="text" placeholder="second number"></input> <br></br>
+        <button onclick="populatesum()">Calculate sum</button> <br></br>
+        <div id="finalSum"></div>
+
+        <!-- throtling & debouncing(delay in sending response) -->
+        <!-- <input oninput="populatesum()" id="firstValue" type="text" placeholder="first number"></input> <br></br>
+        <input oninput="populatesum()" id="secondValue" type="text" placeholder="second number"></input> <br></br>
+        <div id="finalSum"></div> -->
+    </body>
+</html>
