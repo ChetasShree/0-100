@@ -1,0 +1,1 @@
+module.exports = {JWT_SECERT :"chetas_server"};
