@@ -12,11 +12,15 @@
     }
 
     function removeTodoFromDom(todo) {
-      
+      const ele = document.getElementById(todo.id);
+      ele.parent.removeChild(ele);
     }
 
     function updateTodoInDom(oldTodo, newTodo) {
-        
+        const ele = document.getElementById(oldTodo.id);
+        ele.children[0].innerHTML = newTodo.title;
+        ele.children[1].innerHTML = newTodo.description;
+        ele.children[2].innerHTML = newTodo.completed ? "Mark as Done" : "Done";
     }
 
     function updateState(newTodos) {

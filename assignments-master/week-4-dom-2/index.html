@@ -1,0 +1,30 @@
+<html>
+    <script>
+        let timeout;
+        function debouncePopulateDiv(){
+            // delay the call to populateSum until i have not been called for 1000ms and I have been called atleast once
+            clearTimeout(timeout);
+            timeout = setTimeout(function(){
+                simpleInterest()
+            },1000);
+            
+        }
+        async function simpleInterest(){
+            let p = document.getElementById("principal").value; 
+            let r = document.getElementById("rate").value; 
+            let t = document.getElementById("time").value; 
+            const response = await fetch("https://sum-server.100xdevs.com/interest?principal=" + p + "&rate=" + r + "&time=" + t)
+            const ans = await response.text();
+            console.log(ans);
+            document.getElementById("finalAns").innerHTML=ans; 
+        }
+
+    </script>
+    <body>
+        <input id = "principal" type="text" placeholder="principal"></input> <br></br>
+        <input id = "rate" type="text" placeholder="rate"></input> <br></br>
+        <input id = "time" type="text" placeholder="time"></input> <br></br>
+        <button onclick="simpleInterest()">Calculate Simple Interest</button><br></br>
+        <div id="finalAns"></div>
+    </body>
+</html>

@@ -2,6 +2,7 @@
 
 ### Description
 You need to implement a course selling app. Make sure you setup your own mongodb instance before starting. 
+<!-- mongodb+srv://admin:5SlQPq865V8kKOss@cluster0.wxirfuk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0 -->
 It needs to support two types of users - 
 1. Admins
 2. Users
